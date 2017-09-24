@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+
+<!-- Page Header -->
+{% block header %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/post-bg.jpg')}} ')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1>{{ post.title }}</h1>
+                    <h2 class="subheading">{{ post.subtitle }}</h2>
+              <span class="meta">Posted by
+                <a href="#">{{ post.author }}</a>
+                on {{ post.created_time|timeformat }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+<!-- Post Content -->
+{% block content %}
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="content-markdown">{{ post.content }}</div>
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+{% endblock %}

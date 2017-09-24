@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+
+
+<!-- Page Header -->
+{% block header %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/post-sample-image.jpg') }}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>Login</h1>
+                    <span class="subheading">Enter login information.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+<!-- Main Content -->
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <form name="loginForm" id="loginForm" method="POST" action="{{ url_for('.register') }}" novalidate>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Username</label>
+                        <input type="text" class="form-control" placeholder="Username" name="username" id="username" required
+                               data-validation-required-message="Please enter a title.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Password</label>
+                        <input type="text" class="form-control" placeholder="Password" name="password" id="password"
+                               required data-validation-required-message="Please enter your email address.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div><a href="{{ url_for('.auth') }}">登录</a></div>
+                <br>
+                <div id="success"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-secondary" id="SignInButton">Register</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<hr>
+{% endblock %}

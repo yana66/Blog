@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+<!-- Page Header -->
+{% block header %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/home-bg.jpg')}} ')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Yang's Blog</h1>
+                    <span class="subheading">A Blog written by Yang</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+
+<!-- Main Content -->
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% for post in posts %}
+            <div class="post-preview">
+                <a href="{{ url_for('.detail', title=post.title) }}">
+                    <h2 class="post-title">
+                        {{ post.title }}
+                    </h2>
+                        <h3 class="post-subtitle">
+                            {{ post.subtitle }}
+                        </h3>
+                </a>
+                <p class="post-meta">Posted by
+                    <a href="#">{{ post.author }}</a>
+                    on {{ post.created_time|timeformat }}</p>
+            </div>
+            <hr>
+            {% endfor %}
+            <!-- Pager -->
+            <div class="clearfix">
+                {% if n_url %}
+                <a class="btn btn-secondary float-left" href="{{ newer_url }}">&larr; Newer Posts</a>
+                {% endif %}
+                {% if o_url%}
+                <a class="btn btn-secondary float-right" href="{{ older_url }}">Older Posts &rarr;</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<hr>
+{% endblock %}
