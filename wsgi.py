@@ -24,6 +24,9 @@ application = app.app
 # gunicorn wsgi --bind 0.0.0.0:2000
 
 """
+ln -s /var/www/blog/conf/supervisor.conf /etc/supervisor/conf.d/blog.conf
+ln -s /var/www/blog/conf/nginx.conf /etc/nginx/sites-enabled/blog
+
 → ~ nano /etc/supervisor/conf.d/<xx>.conf
 
 #写入下面这个文件
