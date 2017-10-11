@@ -27,6 +27,6 @@ def admin_required(f):
         username = session.get('username')
         user = User.find_one(username=username, admin=True)
         if not user:
-            abort(404)
+            return "对不起,权限不足不能发表博客"
         return f(*args, **kwargs)
     return function
