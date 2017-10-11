@@ -43,30 +43,35 @@ def contact():
 
 # 写博客
 @main.route('/add')
+@admin_required
 def add():
     return render_template('add.html')
 
 
 # 提交新博客
 @main.route('/new', methods=['POST'])
+@admin_required
 def new():
     Post.new(request.form)
     return redirect(url_for('.index'))
 
 
 @main.route('/edit/<title>')
+@admin_required
 def edit(title):
     m = Post.find_one(title=title)
     return render_template('edit.html', post=m)
 
 
 @main.route('/update/<title>', methods=['POST'])
+@admin_required
 def update(title):
     Post.update(request.form)
     return redirect(url_for('.detail', title=title))
 
 
 @main.route('/delete/<title>')
+@admin_required
 def delete(title):
     Post.delete(title=title)
     return redirect(url_for('.index'))
