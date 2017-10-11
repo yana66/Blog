@@ -31,7 +31,7 @@ class User(Mongo):
     def login(cls, form):
         username = form.get('username')
         password = form.get('password')
-        user = cls.find_one(username=username)
+        user = User.find_one(username=username)
         if user and user['password'] == salted_password(password):
             return user
         else:
