@@ -1,4 +1,4 @@
-from flask import session, request, url_for, redirect, render_template, Blueprint, abort
+from flask import session, request, url_for, redirect, render_template, Blueprint, flash
 from models.user import User
 from models.post import Post
 from functools import wraps
@@ -27,6 +27,7 @@ def admin_required(f):
         username = session.get('username')
         user = User.find_one(username=username, admin=True)
         if not user:
-            return "对不起,权限不足不能发表博客"
+            flash('权限不足不能发表博客')
+            return redirect(url_for('home.index'))
         return f(*args, **kwargs)
     return function

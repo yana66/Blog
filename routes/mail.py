@@ -25,9 +25,10 @@ mail = Mail(app)
 def send():
     form = request.form
     title = ' An Email from {} / phoneNumber: {} /email: {}'.format(
-        form.get('name'), form.get('phone'), form.get('mail'))
+        form.get('name'), form.get('phone'), form.get('email'))
 
     msg = Message(title, sender=config.MAIL_USERNAME, recipients=[config.MAIL_USERNAME])
     msg.body = form.get('message')
     mail.send(msg)
-    return 'Successfully Sent!'
+    flash('Successfully Sent!')
+    return redirect(url_for('home.send'))
