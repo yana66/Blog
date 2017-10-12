@@ -21,7 +21,7 @@ app.config.update(
 mail = Mail(app)
 
 
-@main.route('/', methods=['POST'])
+@main.route('/mail', methods=['POST'])
 def send():
     form = request.form
     sender = form.get('email')
