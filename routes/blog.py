@@ -66,7 +66,7 @@ def edit(title):
 @main.route('/update/<title>', methods=['POST'])
 @admin_required
 def update(title):
-    Post.update(request.form)
+    Post.update(request.form, title=title)
     return redirect(url_for('.detail', title=title))
 
 
