@@ -31,4 +31,4 @@ def send():
     msg.body = form.get('message')
     mail.send(msg)
     flash('Successfully Sent!')
-    return redirect(url_for('home.send'))
+    return redirect(url_for('.send'))
