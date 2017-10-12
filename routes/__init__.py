@@ -27,7 +27,6 @@ def admin_required(f):
         username = session.get('username')
         user = User.find_one(username=username, admin=True)
         if not user:
-            flash('权限不足不能发表博客')
-            return redirect(url_for('home.index'))
+            return '权限不足不能发表博客哟~'
         return f(*args, **kwargs)
     return function
