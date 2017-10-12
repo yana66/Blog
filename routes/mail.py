@@ -24,11 +24,10 @@ mail = Mail(app)
 @main.route('/mail', methods=['POST'])
 def send():
     form = request.form
-    sender = form.get('email')
-    title = ' An Email from {} / phoneNumber: {}'.format(form.get('name'), form.get('phone'))
+    title = ' An Email from {} / phoneNumber: {} /email: {}'.format(
+        form.get('name'), form.get('phone'), form.get('mail'))
 
-    msg = Message(title, sender=sender, recipients=['47071571@qq.com'])
+    msg = Message(title, sender=config.MAIL_USERNAME, recipients=[config.MAIL_USERNAME])
     msg.body = form.get('message')
     mail.send(msg)
-    print('Mail sent')
-    return 'Sent'
+    return 'Successfully Sent!'
