@@ -94,6 +94,7 @@ def auth():
 def login():
     form = request.form
     user = User.login(form)
+    print('user', user)
     if user:
         session['username'] = user['username']
         session.permanent = True
@@ -107,6 +108,6 @@ def register():
         if User.register(request.form):
             return redirect(url_for('.auth'))
         else:
-            return redirect(url_for('register'))
+            return redirect(url_for('home.register'))
     return render_template('register.html')
 

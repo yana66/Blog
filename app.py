@@ -1,5 +1,4 @@
-from flask import Flask
-from flask_mail import Mail, Message
+from flask import Flask, session
 import time
 import config
 from routes import current_user
